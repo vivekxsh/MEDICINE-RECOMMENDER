@@ -149,8 +149,8 @@ def fillData():
 
 if __name__ == '__main__':
 
-    app.run(debug=True)
-    # app.run(host="10.2.7.5", port=5000, debug=True)
+    # app.run(debug=True)
+    app.run(host="10.2.7.5", port=5000, debug=True)
 
 
 
