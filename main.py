@@ -2,9 +2,9 @@
 # pip install flask
 # pip install scikit-lear==1.3.2
 
-import streamlit as st
+# import streamlit as st
 
-# from flask import Flask, request, render_template, jsonify  # Import jsonify
+from flask import Flask, request, render_template, jsonify  # Import jsonify
 import numpy as np
 import pandas as pd
 import pickle
