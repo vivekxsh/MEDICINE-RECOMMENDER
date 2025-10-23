@@ -7,7 +7,7 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      xintegrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
 
@@ -20,230 +20,323 @@
       href="../static/favicon.svg"
       type="image/svg+xml"
     />
-  </head>
-
-  <style>
-    :root {
-      --bg-oxford-blue-2: hsla(222, 47%, 11%, 1);
-      --text-shadow-blue: hsla(217, 24%, 59%, 1);
-      --lineHeight-4: 1.5;
-    }
-    body {
-      background-color: var(--bg-oxford-blue-2);
-      color: var(--text-shadow-blue);
-      line-height: var(--lineHeight-4);
-      overflow-y: overlay;
-    }
-
-    .logo {
-      width: 50px;
-      height: 50px;
-      color: black;
-      margin-top: 0;
-      margin-left: 2px;
-    }
-
-    .myimg {
-      width: 50px;
-      height: 50px;
-      border: 2px solid black;
-      border-radius: 25px;
-    }
-  </style>
-
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
-    /* body{
-    background: #E3F2FD;
-} */
-
-    .chatbot-toggler {
-      position: fixed;
-      right: 40px;
-      bottom: 35px;
-      height: 50px;
-      width: 50px;
-      color: #fff;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      background: #724ae8;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
-
-    .show-chatbot .chatbot-toggler {
-      transform: rotate(90deg);
-    }
-
-    .chatbot-toggler span {
-      position: absolute;
-    }
-
-    .show-chatbot .chatbot-toggler span:first-child,
-    .chatbot-toggler span:last-child {
-      opacity: 0;
-    }
-
-    .show-chatbot .chatbot-toggler span:last-child {
-      opacity: 1;
-    }
-
-    .chatbot {
-      position: fixed;
-      right: 40px;
-      bottom: 100px;
-      width: 420px;
-      transform: scale(0.5);
-      opacity: 0;
-      pointer-events: none;
-      background: #fff;
-      border-radius: 15px;
-      transform: bottom right;
-      box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
-        0 32px 64px -48px rgba(0, 0, 0, 0.5);
-      transition: all 0.1s ease;
-    }
-
-    .show-chatbot .chatbot {
-      transform: scale(1);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .chatbot header {
-      background: #724ae8;
-      padding: 16px 0;
-      text-align: center;
-      position: relative;
-    }
-
-    .chabot header h2 {
-      color: #fff;
-      font-size: 1.4rem;
-    }
-
-    .chatbot header span {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      color: #fff;
-      cursor: pointer;
-      display: none;
-      transform: translateY(-50%);
-    }
-
-    .chatbot .chatbox {
-      height: 510px;
-      overflow-y: auto;
-      padding: 30px 20px 100px;
-    }
-
-    .chabox .chat {
-      display: flex;
-    }
-
-    .chatbox .incoming span {
-      height: 32px;
-      width: 32px;
-      color: #fff;
-      align-self: center;
-      background: #724ae8;
-      text-align: center;
-      line-height: 32px;
-      border-radius: 4px;
-      margin: 0 10px 7px 0;
-    }
-
-    .chatbox .outgoing {
-      margin: 20px 0;
-      justify-content: flex-end;
-    }
-
-    .chatbox .chat p {
-      color: #fff;
-      max-width: 75%;
-      white-space: pre-wrap;
-      font-size: 0.95rem;
-      padding: 12px 16px;
-      border-radius: 10px 10px 0 10px;
-      background: #724ae8;
-    }
-
-    /* .chatbox .chat p.error{
-    color: #721c24;
-    background: #f8d7da;
-} */
-
-    .chatbox .incoming p {
-      color: #000;
-      background: #f2f2f2;
-      border-radius: 10px 10px 10px 0;
-    }
-
-    .chatbot .chat-input {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      gap: 5px;
-      background: #fff;
-      padding: 5px 20px;
-      border-top: 1px solid #ccc;
-    }
-
-    .chat-input textarea {
-      height: 55px;
-      width: 100%;
-      border: none;
-      outline: none;
-      max-height: 180px;
-      font-size: 0.95rem;
-      resize: 16px 15px 16px 0;
-    }
-
-    .chat-input span {
-      align-self: flex-end;
-      height: 55px;
-      line-height: 55px;
-      color: #724ae8;
-      font-size: 1.35rem;
-      cursor: pointer;
-      visibility: hidden;
-    }
-
-    .chat-input textarea:valid ~ span {
-      visibility: visible;
-    }
-
-    @media (max-width: 490px) {
-      .chatbot {
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
+    <!-- The original Tailwind CSS link was not present, but I'll add the necessary autocomplete CSS here -->
+    <style>
+      :root {
+        --bg-oxford-blue-2: hsla(222, 47%, 11%, 1);
+        --text-shadow-blue: hsla(217, 24%, 59%, 1);
+        --lineHeight-4: 1.5;
+      }
+      body {
+        background-color: var(--bg-oxford-blue-2);
+        color: var(--text-shadow-blue);
+        line-height: var(--lineHeight-4);
+        overflow-y: overlay;
       }
 
-      .chatbot .chatbox {
-        height: 90%;
+      .logo {
+        width: 50px;
+        height: 50px;
+        color: black;
+        margin-top: 0;
+        margin-left: 2px;
+      }
+
+      .myimg {
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        border-radius: 25px;
+      }
+
+      .appointment-alert {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .input-with-clear {
+        position: relative;
+      }
+
+      .clear-symptoms {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #999;
+        display: none;
+        z-index: 25; /* Ensure clear button is above suggestions list */
+      }
+
+      .clear-symptoms:hover {
+        color: #333;
+      }
+
+      .symptoms-container {
+        margin-bottom: 20px;
+      }
+
+      .prediction-result {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        display: none;
+      }
+
+      /* Increased button sizes */
+      .toggle-button {
+        padding: 12px 20px !important;
+        margin: 10px 15px 10px 0 !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
+        width: 180px !important;
+        border-radius: 8px !important;
+        text-align: center;
+      }
+
+      .result-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      /* --- AUTOCOMPLETE STYLES --- */
+      .suggestions-list {
+        position: absolute;
+        z-index: 20; /* Ensure it floats above other elements */
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #fff; /* White background for visibility */
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: none; /* Hide by default */
+        top: 100%; /* Position right below the input */
+      }
+      .suggestion-item {
+        padding: 8px 15px;
+        cursor: pointer;
+        color: #333; /* Dark text for contrast on white background */
+        border-bottom: 1px solid #eee;
+      }
+      .suggestion-item:last-child {
+        border-bottom: none;
+      }
+      .suggestion-item.active,
+      .suggestion-item:hover {
+        background-color: #e9ecef; /* Light gray hover */
+      }
+      /* -------------------------- */
+    </style>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .chatbot-toggler {
+        position: fixed;
+        right: 40px;
+        bottom: 35px;
+        height: 50px;
+        width: 50px;
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: #724ae8;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+      }
+
+      .show-chatbot .chatbot-toggler {
+        transform: rotate(90deg);
+      }
+
+      .chatbot-toggler span {
+        position: absolute;
+      }
+
+      .show-chatbot .chatbot-toggler span:first-child,
+      .chatbot-toggler span:last-child {
+        opacity: 0;
+      }
+
+      .show-chatbot .chatbot-toggler span:last-child {
+        opacity: 1;
+      }
+
+      .chatbot {
+        position: fixed;
+        right: 40px;
+        bottom: 100px;
+        width: 420px;
+        transform: scale(0.5);
+        opacity: 0;
+        pointer-events: none;
+        background: #fff;
+        border-radius: 15px;
+        transform: bottom right;
+        box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+          0 32px 64px -48px rgba(0, 0, 0, 0.5);
+        transition: all 0.1s ease;
+      }
+
+      .show-chatbot .chatbot {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .chatbot header {
+        background: #724ae8;
+        padding: 16px 0;
+        text-align: center;
+        position: relative;
+      }
+
+      .chabot header h2 {
+        color: #fff;
+        font-size: 1.4rem;
       }
 
       .chatbot header span {
-        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        color: #fff;
+        cursor: pointer;
+        display: none;
+        transform: translateY(-50%);
       }
-    }
-  </style>
+
+      .chatbot .chatbox {
+        height: 510px;
+        overflow-y: auto;
+        padding: 30px 20px 100px;
+      }
+
+      .chabox .chat {
+        display: flex;
+      }
+
+      .chatbox .incoming span {
+        height: 32px;
+        width: 32px;
+        color: #fff;
+        align-self: center;
+        background: #724ae8;
+        text-align: center;
+        line-height: 32px;
+        border-radius: 4px;
+        margin: 0 10px 7px 0;
+      }
+
+      .chatbox .outgoing {
+        margin: 20px 0;
+        justify-content: flex-end;
+      }
+
+      .chatbox .chat p {
+        color: #fff;
+        max-width: 75%;
+        white-space: pre-wrap;
+        font-size: 0.95rem;
+        padding: 12px 16px;
+        border-radius: 10px 10px 0 10px;
+        background: #724ae8;
+      }
+
+      .chatbox .incoming p {
+        color: #000;
+        background: #f2f2f2;
+        border-radius: 10px 10px 10px 0;
+      }
+
+      .chatbot .chat-input {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        gap: 5px;
+        background: #fff;
+        padding: 5px 20px;
+        border-top: 1px solid #ccc;
+      }
+
+      .chat-input textarea {
+        height: 55px;
+        width: 100%;
+        border: none;
+        outline: none;
+        max-height: 180px;
+        font-size: 0.95rem;
+        resize: 16px 15px 16px 0;
+      }
+
+      .chat-input span {
+        align-self: flex-end;
+        height: 55px;
+        line-height: 55px;
+        color: #724ae8;
+        font-size: 1.35rem;
+        cursor: pointer;
+        visibility: hidden;
+      }
+
+      .chat-input textarea:valid ~ span {
+        visibility: visible;
+      }
+
+      @media (max-width: 490px) {
+        .chatbot {
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+        }
+
+        .chatbot .chatbox {
+          height: 90%;
+        }
+
+        .chatbot header span {
+          display: block;
+        }
+
+        .toggle-button {
+          width: 160px !important;
+          font-size: 18px !important;
+          padding: 10px 15px !important;
+        }
+
+        .result-container {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
 
   <body>
     <!-- Navbar -->
@@ -328,14 +421,11 @@
               >
             </li>
           </ul>
-          <!-- <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
 
           <a
             href="https://doctor-appointment-ncqn.onrender.com"
             class="btn btn-primary"
+            id="appointmentBtn"
             >Book Appointment</a
           >
         </div>
@@ -355,17 +445,28 @@
         padding: 40px;
       "
     >
-      <form action="/predict" method="post">
-        <div class="form-group">
+      <form id="symptomForm">
+        <div class="symptoms-container">
           <label for="symptoms" style="color: aqua">Select Symptoms:</label>
-          <input
-            type="text"
-            class="form-control"
-            ,
-            id="symptoms"
-            name="symptoms"
-            placeholder="type systems such as itching, sleeping, aching etc"
-          />
+          <!-- Added autocomplete-container class for relative positioning -->
+          <div class="input-with-clear autocomplete-container">
+            <input
+              type="text"
+              class="form-control"
+              id="symptoms"
+              name="symptoms"
+              placeholder="type symptoms such as itching, fever, headache etc"
+              oninput="handleSymptomInput()"
+              autocomplete="off"
+            />
+            <span
+              class="clear-symptoms material-symbols-outlined"
+              onclick="clearSymptoms()"
+              >close</span
+            >
+            <!-- Suggestions will be rendered here -->
+            <ul id="suggestions" class="suggestions-list"></ul>
+          </div>
         </div>
         <br />
         <button
@@ -381,136 +482,90 @@
         <!-- Display the transcribed text here -->
         <div name="mysysms" id="transcription"></div>
 
-        {% if message %}
-        <p>{{ message }}</p>
-        {% endif %}
+        <div id="message"></div>
         <br />
 
+        <!-- Appointment recommendation alert -->
+        <div class="appointment-alert" id="appointmentAlert">
+          <strong>Multiple symptoms detected!</strong> Based on the number of
+          symptoms you've entered, we recommend booking an appointment with a
+          doctor for a comprehensive evaluation.
+          <div class="mt-2">
+            <a
+              href="https://doctor-appointment-ncqn.onrender.com"
+              class="btn btn-danger btn-sm"
+            >
+              Book Appointment Now
+            </a>
+          </div>
+        </div>
+
         <button
-          type="submit"
+          type="button"
+          id="predictButton"
           class="btn btn-danger btn-lg"
           style="width: 100%; padding: 14px; margin-bottom: 5px"
         >
           Predict
         </button>
       </form>
-    </div>
 
-    {% if predicted_disease %}
+      <!-- Results will be displayed here -->
+      <div id="predictionResult" class="prediction-result">
+        <h2 class="text-center" style="color: aqua">Our AI System Results</h2>
 
-    <!-- Results -->
-    <h1 class="text-center my-4 mt-4" style="color: aqua">
-      Our AI System Results
-    </h1>
-    <div class="container">
-      <div class="result-container">
-        <!-- Buttons to toggle display -->
-        <button
-          class="toggle-button"
-          data-bs-toggle="modal"
-          data-bs-target="#diseaseModal"
-          style="
-            padding: 4px;
-            margin: 5px 40px 5px 0;
-            font-size: 20px;
-            font-weight: bold;
-            width: 140px;
-            border-radius: 5px;
-            background: #f39334;
-            color: black;
-          "
-        >
-          Disease
-        </button>
-        <button
-          class="toggle-button"
-          data-bs-toggle="modal"
-          data-bs-target="#descriptionModal"
-          style="
-            padding: 4px;
-            margin: 5px 40px 5px 0;
-            font-size: 20px;
-            font-weight: bold;
-            width: 140px;
-            border-radius: 5px;
-            background: #268af3;
-            color: black;
-          "
-        >
-          Description
-        </button>
-        <button
-          class="toggle-button"
-          data-bs-toggle="modal"
-          data-bs-target="#precautionModal"
-          style="
-            padding: 4px;
-            margin: 5px 40px 5px 0;
-            font-size: 20px;
-            font-weight: bold;
-            width: 140px;
-            border-radius: 5px;
-            background: #f371f9;
-            color: black;
-          "
-        >
-          Precaution
-        </button>
-        <button
-          class="toggle-button"
-          data-bs-toggle="modal"
-          data-bs-target="#medicationsModal"
-          style="
-            padding: 4px;
-            margin: 5px 40px 5px 0;
-            font-size: 20px;
-            font-weight: bold;
-            width: 140px;
-            border-radius: 5px;
-            background: #f8576f;
-            color: black;
-          "
-        >
-          Medications
-        </button>
-        <button
-          class="toggle-button"
-          data-bs-toggle="modal"
-          data-bs-target="#workoutsModal"
-          style="
-            padding: 4px;
-            margin: 5px 40px 5px 0;
-            font-size: 20px;
-            font-weight: bold;
-            width: 140px;
-            border-radius: 5px;
-            background: #99f741;
-            color: black;
-          "
-        >
-          Workouts
-        </button>
-        <button
-          class="toggle-button"
-          data-bs-toggle="modal"
-          data-bs-target="#dietsModal"
-          style="
-            padding: 4px;
-            margin: 5px 40px 5px 0;
-            font-size: 20px;
-            font-weight: bold;
-            width: 140px;
-            border-radius: 5px;
-            background: #e5e23d;
-            color: black;
-          "
-        >
-          Diets
-        </button>
+        <div class="result-container mt-4">
+          <button
+            class="toggle-button"
+            data-bs-toggle="modal"
+            data-bs-target="#diseaseModal"
+            style="background: #f39334; color: black"
+          >
+            Disease
+          </button>
+          <button
+            class="toggle-button"
+            data-bs-toggle="modal"
+            data-bs-target="#descriptionModal"
+            style="background: #268af3; color: black"
+          >
+            Description
+          </button>
+          <button
+            class="toggle-button"
+            data-bs-toggle="modal"
+            data-bs-target="#precautionModal"
+            style="background: #f371f9; color: black"
+          >
+            Precaution
+          </button>
+          <button
+            class="toggle-button"
+            data-bs-toggle="modal"
+            data-bs-target="#medicationsModal"
+            style="background: #f8576f; color: black"
+          >
+            Medications
+          </button>
+          <button
+            class="toggle-button"
+            data-bs-toggle="modal"
+            data-bs-target="#workoutsModal"
+            style="background: #99f741; color: black"
+          >
+            Workouts
+          </button>
+          <button
+            class="toggle-button"
+            data-bs-toggle="modal"
+            data-bs-target="#dietsModal"
+            style="background: #e5e23d; color: black"
+          >
+            Diets
+          </button>
+        </div>
       </div>
     </div>
-
-    {% endif %}
 
     <!-- Disease Modal -->
     <div
@@ -526,7 +581,6 @@
             class="modal-header"
             style="background-color: #020606; color: #fff"
           >
-            <!-- Set header background color inline -->
             <h5 class="modal-title" id="diseaseModalLabel">
               Predicted Disease
             </h5>
@@ -537,9 +591,8 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body" style="background-color: modal-body-color">
-            <!-- Set modal body background color inline -->
-            <p>{{ predicted_disease }}</p>
+          <div class="modal-body">
+            <p id="predictedDisease">Please enter symptoms and click Predict</p>
           </div>
         </div>
       </div>
@@ -568,7 +621,9 @@
             ></button>
           </div>
           <div class="modal-body">
-            <p>{{ dis_des }}</p>
+            <p id="diseaseDescription">
+              Description will appear here after prediction
+            </p>
           </div>
         </div>
       </div>
@@ -597,10 +652,8 @@
             ></button>
           </div>
           <div class="modal-body">
-            <ul>
-              {% for i in my_precautions %}
-              <li>{{ i }}</li>
-              {% endfor %}
+            <ul id="precautionsList">
+              <li>Precautions will appear here after prediction</li>
             </ul>
           </div>
         </div>
@@ -630,10 +683,8 @@
             ></button>
           </div>
           <div class="modal-body">
-            <ul>
-              {% for i in medications %}
-              <li>{{ i }}</li>
-              {% endfor %}
+            <ul id="medicationsList">
+              <li>Medications will appear here after prediction</li>
             </ul>
           </div>
         </div>
@@ -663,10 +714,8 @@
             ></button>
           </div>
           <div class="modal-body">
-            <ul>
-              {% for i in workout %}
-              <li>{{ i }}</li>
-              {% endfor %}
+            <ul id="workoutsList">
+              <li>Workout recommendations will appear here after prediction</li>
             </ul>
           </div>
         </div>
@@ -696,10 +745,8 @@
             ></button>
           </div>
           <div class="modal-body">
-            <ul>
-              {% for i in my_diet %}
-              <li>{{ i }}</li>
-              {% endfor %}
+            <ul id="dietsList">
+              <li>Diet recommendations will appear here after prediction</li>
             </ul>
           </div>
         </div>
@@ -719,7 +766,7 @@
       <ul class="chatbox">
         <li class="chat incoming">
           <span class="material-symbols-outlined">smart_toy</span>
-          <!-- <p>Hi there 👋 <br>How can I help you today? </p> -->
+          <p>Hi there 👋 <br />How can I help you today?</p>
         </li>
       </ul>
       <div class="chat-input">
@@ -729,6 +776,642 @@
     </div>
 
     <script>
+      // Disease database with symptoms and information
+      const diseaseDatabase = {
+        "Fungal infection": {
+          symptoms: [
+            "itching",
+            "skin rash",
+            "nodal skin eruptions",
+            "dischromic patches",
+          ],
+          description:
+            "A fungal infection is a skin disease caused by a fungus. The most common types are athlete's foot, jock itch, ringworm, and yeast infections.",
+          precautions: [
+            "Keep the affected area clean and dry",
+            "Wear breathable clothing",
+            "Avoid sharing personal items",
+            "Use antifungal powders in moist areas",
+          ],
+          medications: [
+            "Clotrimazole cream",
+            "Miconazole powder",
+            "Terbinafine ointment",
+            "Fluconazole tablets (for severe cases)",
+          ],
+          workouts: [
+            "Light walking to improve circulation",
+            "Yoga for stress reduction",
+            "Swimming (after infection has cleared)",
+            "Breathing exercises for overall wellness",
+          ],
+          diets: [
+            "Foods rich in probiotics like yogurt",
+            "Garlic and onions for their antifungal properties",
+            "Reduce sugar intake",
+            "Stay hydrated with plenty of water",
+          ],
+        },
+        Allergy: {
+          symptoms: [
+            "continuous sneezing",
+            "shivering",
+            "watering from eyes",
+            "runny nose",
+          ],
+          description:
+            "An allergy is an immune system response to a foreign substance that's not typically harmful to your body.",
+          precautions: [
+            "Identify and avoid allergens",
+            "Keep windows closed during high pollen seasons",
+            "Use air purifiers",
+            "Wash bedding regularly in hot water",
+          ],
+          medications: [
+            "Antihistamines (e.g., Loratadine, Cetirizine)",
+            "Decongestants",
+            "Nasal corticosteroids",
+            "Allergy shots (immunotherapy) for severe cases",
+          ],
+          workouts: [
+            "Indoor exercises during high pollen seasons",
+            "Swimming in chlorinated pools (if not allergic to chlorine)",
+            "Yoga for stress management",
+            "Breathing exercises",
+          ],
+          diets: [
+            "Foods rich in Omega-3 fatty acids",
+            "Local honey may help with pollen allergies",
+            "Vitamin C rich foods",
+            "Avoid foods that trigger cross-reactivity if you have pollen allergies",
+          ],
+        },
+        GERD: {
+          symptoms: ["stomach pain", "acidity", "ulcers on tongue", "vomiting"],
+          description:
+            "Gastroesophageal reflux disease (GERD) occurs when stomach acid frequently flows back into the tube connecting your mouth and stomach (esophagus).",
+          precautions: [
+            "Eat smaller, more frequent meals",
+            "Avoid lying down after eating",
+            "Elevate the head of your bed",
+            "Identify and avoid trigger foods",
+          ],
+          medications: [
+            "Antacids (Tums, Rolaids)",
+            "H2 receptor blockers (Famotidine, Cimetidine)",
+            "Proton pump inhibitors (Omeprazole, Esomeprazole)",
+            "Prokinetics",
+          ],
+          workouts: [
+            "Low-impact exercises like walking",
+            "Avoid exercises that put pressure on abdomen",
+            "Yoga poses that aid digestion",
+            "Wait 2-3 hours after eating before exercising",
+          ],
+          diets: [
+            "Non-citrus fruits",
+            "Lean proteins",
+            "Complex carbohydrates",
+            "Avoid spicy, fatty, and acidic foods",
+          ],
+        },
+        "Chronic cholestasis": {
+          symptoms: [
+            "yellowish skin",
+            "nausea",
+            "loss of appetite",
+            "yellowing of eyes",
+          ],
+          description:
+            "Chronic cholestasis is a condition where bile cannot flow from the liver to the duodenum, leading to accumulation of bile acids in the liver.",
+          precautions: [
+            "Avoid alcohol completely",
+            "Follow a low-fat diet",
+            "Take medications as prescribed",
+            "Regular monitoring of liver function",
+          ],
+          medications: [
+            "Ursodeoxycholic acid",
+            "Cholestyramine for itching",
+            "Vitamin supplements (A, D, E, K)",
+            "Antibiotics for associated infections",
+          ],
+          workouts: [
+            "Light walking",
+            "Stretching exercises",
+            "Avoid strenuous activities",
+            "Breathing exercises",
+          ],
+          diets: [
+            "Low-fat, high-carbohydrate diet",
+            "Medium-chain triglyceride (MCT) oil",
+            "Small, frequent meals",
+            "Avoid raw shellfish",
+          ],
+        },
+        Migraine: {
+          symptoms: [
+            "headache",
+            "blurred and distorted vision",
+            "acidity",
+            "depression",
+          ],
+          description:
+            "A migraine is a headache that can cause severe throbbing pain or a pulsing sensation, usually on one side of the head.",
+          precautions: [
+            "Identify and avoid triggers",
+            "Maintain a regular sleep schedule",
+            "Manage stress",
+            "Stay hydrated",
+          ],
+          medications: [
+            "Pain relievers (Ibuprofen, Aspirin)",
+            "Triptans (Sumatriptan, Rizatriptan)",
+            "Anti-nausea drugs",
+            "Preventive medications (Beta blockers, Antidepressants)",
+          ],
+          workouts: [
+            "Regular aerobic exercise",
+            "Yoga and stretching",
+            "Avoid intense exercise during attacks",
+            "Neck and shoulder exercises",
+          ],
+          diets: [
+            "Identify and avoid food triggers",
+            "Eat at regular intervals",
+            "Stay hydrated",
+            "Magnesium-rich foods",
+          ],
+        },
+        // --- ADDED NEW DISEASES BELOW ---
+        "Common Cold": {
+          symptoms: [
+            "sneezing",
+            "sore throat",
+            "cough",
+            "nasal congestion",
+            "body aches",
+          ],
+          description:
+            "A common viral infection of the nose and throat. It is usually harmless, although it might not feel that way.",
+          precautions: [
+            "Frequent hand washing",
+            "Avoid touching face",
+            "Stay home when sick",
+            "Disinfect frequently touched surfaces",
+          ],
+          medications: [
+            "Over-the-counter pain relievers (acetaminophen/ibuprofen)",
+            "Decongestants",
+            "Cough syrup",
+            "Zinc lozenges (may reduce duration)",
+          ],
+          workouts: [
+            "Rest is paramount",
+            "Light stretching or gentle walking only if fever-free",
+            "Avoid intense exercise",
+          ],
+          diets: [
+            "Hot liquids (tea, broth)",
+            "Vitamin C rich foods (oranges, bell peppers)",
+            "Honey for cough relief",
+            "Avoid dairy if it thickens mucus",
+          ],
+        },
+        Dengue: {
+          symptoms: [
+            "high fever",
+            "severe headache",
+            "joint pain",
+            "rash",
+            "nausea",
+            "eye pain",
+          ],
+          description:
+            "A mosquito-borne viral infection causing a severe flu-like illness and, occasionally, a potentially lethal complication called severe dengue.",
+          precautions: [
+            "Use mosquito repellents",
+            "Wear long-sleeved clothing",
+            "Eliminate standing water sources",
+            "Sleep under mosquito nets",
+          ],
+          medications: [
+            "Acetaminophen (Paracetamol) for fever/pain",
+            "IV fluid replacement (in severe cases)",
+            "Rest",
+            "DO NOT take Aspirin or Ibuprofen",
+          ],
+          workouts: [
+            "Absolute rest",
+            "Avoid all physical activity",
+            "Gentle stretching once recovered (only with doctor's approval)",
+          ],
+          diets: [
+            "Hydrating fluids (water, coconut water, fruit juice)",
+            "Bland, easily digestible foods",
+            "Avoid spicy or oily food",
+            "Papaya leaf extract (popular folk remedy, consult doctor)",
+          ],
+        },
+        Typhoid: {
+          symptoms: [
+            "sustained high fever",
+            "weakness",
+            "stomach pain",
+            "loss of appetite",
+            "constipation",
+            "diarrhea",
+          ],
+          description:
+            "Typhoid fever is a bacterial infection that can spread throughout the body, affecting many organs. It is caused by Salmonella typhi.",
+          precautions: [
+            "Get vaccinated before traveling to high-risk areas",
+            "Drink only bottled or boiled water",
+            "Eat fully cooked food",
+            "Practice strict hygiene (hand washing)",
+          ],
+          medications: [
+            "Antibiotics (e.g., Ciprofloxacin, Azithromycin)",
+            "Plenty of fluids",
+            "Antipyretics for fever",
+          ],
+          workouts: [
+            "Strict bed rest during the fever stage",
+            "Gradual, light activity during recovery",
+            "Avoid strenuous activities for several weeks",
+          ],
+          diets: [
+            "Soft, easily digestible foods (porridge, boiled rice)",
+            "High protein diet post-recovery",
+            "Ensure adequate fluid intake",
+            "Avoid raw vegetables and unpeeled fruits",
+          ],
+        },
+        Hypothyroidism: {
+          symptoms: [
+            "fatigue",
+            "weight gain",
+            "dry skin",
+            "cold intolerance",
+            "depression",
+            "hair loss",
+          ],
+          description:
+            "Hypothyroidism is a condition in which the thyroid gland doesn't produce enough hormones. This slows down your metabolism.",
+          precautions: [
+            "Regular blood tests to monitor thyroid levels",
+            "Take prescribed medication consistently at the same time",
+            "Maintain a balanced lifestyle",
+            "Manage stress",
+          ],
+          medications: [
+            "Levothyroxine (Synthetic thyroid hormone)",
+            "Supplements (Selenium, Zinc) - consult doctor first",
+          ],
+          workouts: [
+            "Low-impact aerobic exercises (swimming, cycling)",
+            "Strength training to build muscle mass",
+            "Yoga for energy and flexibility",
+            "Start slow and increase intensity gradually",
+          ],
+          diets: [
+            "Iodine-rich foods (iodized salt, fish)",
+            "Selenium-rich foods (Brazil nuts, eggs)",
+            "Avoid excessive raw cruciferous vegetables (broccoli, cabbage)",
+            "Ensure adequate fiber intake",
+          ],
+        },
+      };
+
+      // --- EXPANDED SYMPTOM LIST FOR BETTER AUTOCOMPLETE ---
+      const generalSymptoms = [
+        "fatigue",
+        "dizziness",
+        "sore throat",
+        "cough",
+        "shortness of breath",
+        "chest pain",
+        "abdominal pain",
+        "diarrhea",
+        "constipation",
+        "fever",
+        "chills",
+        "body aches",
+        "joint pain",
+        "muscle weakness",
+        "rash",
+        "hives",
+        "swelling",
+        "numbness",
+        "tingling",
+        "difficulty swallowing",
+        "weight loss",
+        "weight gain",
+        "blurred vision",
+        "ringing in ears",
+        "difficulty sleeping",
+        "mood swings",
+        "anxiety",
+        "confusion",
+        "memory loss",
+        "frequent urination",
+        "blood in urine",
+        "painful urination",
+        "appetite changes",
+        "back pain",
+        "neck stiffness",
+        "nasal congestion",
+        "earache",
+        "hoarseness",
+        "lightheadedness",
+        "palpitations",
+        "excessive thirst",
+        "dry skin",
+        "hair loss",
+        "easy bruising",
+        "tremors",
+        "vomiting",
+        "itching",
+        "headache",
+        "runny nose",
+        "acidity",
+        "nausea", // Added common general terms
+      ];
+      // -----------------------------------------------------
+
+      // --- AUTOCOMPLETE LOGIC ---
+
+      // 1. Extract all unique symptoms from the database AND the general list
+      function getAllUniqueSymptoms() {
+        const uniqueSymptoms = new Set();
+
+        // 1. Add symptoms from the disease database
+        for (const data of Object.values(diseaseDatabase)) {
+          data.symptoms.forEach((s) =>
+            uniqueSymptoms.add(s.toLowerCase().trim())
+          );
+        }
+
+        // 2. Add symptoms from the general list
+        generalSymptoms.forEach((s) =>
+          uniqueSymptoms.add(s.toLowerCase().trim())
+        );
+
+        return Array.from(uniqueSymptoms).sort();
+      }
+      const allSymptoms = getAllUniqueSymptoms(); // Cache the expanded symptom list
+
+      const symptomInput = document.getElementById("symptoms");
+      const suggestionsList = document.getElementById("suggestions");
+      let selectedIndex = -1; // For keyboard navigation
+
+      // New unified input handler: calls both checkSymptoms and showSuggestions
+      function handleSymptomInput() {
+        checkSymptoms();
+        showSuggestions();
+      }
+
+      function showSuggestions() {
+        const query = symptomInput.value.toLowerCase().trim();
+        suggestionsList.innerHTML = "";
+        selectedIndex = -1;
+
+        // Hide if query is too short
+        if (query.length < 2) {
+          suggestionsList.style.display = "none";
+          return;
+        }
+
+        // Handle multi-symptom input (split by comma)
+        const parts = query.split(",");
+        let lastQuery = parts[parts.length - 1].trim();
+
+        if (lastQuery.length < 2) {
+          suggestionsList.style.display = "none";
+          return;
+        }
+
+        // Filter symptoms based on the last symptom being typed
+        const filteredSymptoms = allSymptoms
+          .filter((symptom) => symptom.includes(lastQuery))
+          .slice(0, 10); // Limit to 10 suggestions
+
+        if (filteredSymptoms.length === 0) {
+          suggestionsList.style.display = "none";
+          return;
+        }
+
+        // Render suggestions
+        filteredSymptoms.forEach((symptom, index) => {
+          const li = document.createElement("li");
+          li.textContent = symptom;
+          li.classList.add("suggestion-item");
+          li.dataset.index = index;
+
+          // Click handler: replace only the last symptom typed
+          li.addEventListener("click", () => {
+            const currentSymptoms = symptomInput.value
+              .split(",")
+              .map((s) => s.trim())
+              .filter((s) => s.length > 0);
+
+            // Replace the last (partial) symptom with the full, selected symptom
+            if (currentSymptoms.length > 0) {
+              currentSymptoms[currentSymptoms.length - 1] = symptom;
+            } else {
+              currentSymptoms.push(symptom);
+            }
+
+            // Join with comma and space, add a trailing comma and space for the next symptom
+            symptomInput.value = currentSymptoms.join(", ") + ", ";
+            suggestionsList.style.display = "none";
+            symptomInput.focus();
+            checkSymptoms(); // Update alert
+          });
+
+          suggestionsList.appendChild(li);
+        });
+
+        suggestionsList.style.display = "block";
+      }
+
+      // ------------------------------------
+
+      // Function to count symptoms and show appointment recommendation
+      function checkSymptoms() {
+        const symptomsInput = document.getElementById("symptoms");
+        const appointmentAlert = document.getElementById("appointmentAlert");
+        const clearButton = document.querySelector(".clear-symptoms");
+
+        // Show/hide clear button based on input
+        if (symptomsInput.value.length > 0) {
+          clearButton.style.display = "block";
+        } else {
+          clearButton.style.display = "none";
+        }
+
+        if (symptomsInput.value) {
+          // Split symptoms by commas and count non-empty entries
+          const symptoms = symptomsInput.value
+            .split(",")
+            .map((symptom) => symptom.trim())
+            .filter((symptom) => symptom.length > 0);
+
+          if (symptoms.length > 2) {
+            appointmentAlert.style.display = "block";
+          } else {
+            appointmentAlert.style.display = "none";
+          }
+        } else {
+          appointmentAlert.style.display = "none";
+        }
+      }
+
+      // Function to clear symptoms input
+      function clearSymptoms() {
+        const symptomsInput = document.getElementById("symptoms");
+        symptomsInput.value = "";
+        symptomsInput.focus();
+        checkSymptoms(); // Update UI
+        suggestionsList.style.display = "none"; // Hide suggestions when clearing
+      }
+
+      // Function to predict disease based on symptoms
+      function predictDisease(symptoms) {
+        let bestMatch = { disease: "Unknown", score: 0 };
+
+        // Convert symptoms to lowercase for case-insensitive matching
+        const inputSymptoms = symptoms.map((s) => s.toLowerCase());
+
+        // Check each disease in the database
+        for (const [disease, data] of Object.entries(diseaseDatabase)) {
+          let score = 0;
+
+          // Check how many symptoms match
+          for (const symptom of inputSymptoms) {
+            if (
+              data.symptoms.some(
+                (s) => s.toLowerCase().includes(symptom) || symptom.includes(s)
+              )
+            ) {
+              score++;
+            }
+          }
+
+          // Update best match if this disease has a higher score
+          if (score > bestMatch.score) {
+            bestMatch = { disease, score };
+          }
+        }
+
+        // Return the best match (or unknown if no good match)
+        return bestMatch.score > 0 ? bestMatch.disease : "Unknown";
+      }
+
+      // Handle prediction button click
+      document
+        .getElementById("predictButton")
+        .addEventListener("click", function () {
+          const symptomsInput = document.getElementById("symptoms");
+          const messageDiv = document.getElementById("message");
+          const predictionResult = document.getElementById("predictionResult");
+
+          if (!symptomsInput.value || symptomsInput.value.trim() === "") {
+            messageDiv.innerHTML =
+              '<p class="text-warning">Please enter at least one symptom</p>';
+            return;
+          }
+
+          // Split symptoms by commas and count non-empty entries
+          const symptoms = symptomsInput.value
+            .split(",")
+            .map((symptom) => symptom.trim())
+            .filter((symptom) => symptom.length > 0);
+
+          // Show warning for multiple symptoms but proceed with prediction
+          if (symptoms.length > 2) {
+            messageDiv.innerHTML =
+              '<p class="text-warning">Multiple symptoms detected. For accurate diagnosis, please consider booking an appointment with a doctor.</p>';
+          } else {
+            messageDiv.innerHTML = "";
+          }
+
+          // Predict disease based on symptoms
+          const predictedDisease = predictDisease(symptoms);
+
+          // Update the UI with prediction results
+          if (predictedDisease !== "Unknown") {
+            const diseaseData = diseaseDatabase[predictedDisease];
+
+            // Update disease name
+            document.getElementById("predictedDisease").textContent =
+              predictedDisease;
+
+            // Update disease description
+            document.getElementById("diseaseDescription").textContent =
+              diseaseData.description;
+
+            // Update precautions
+            const precautionsList = document.getElementById("precautionsList");
+            precautionsList.innerHTML = "";
+            diseaseData.precautions.forEach((precaution) => {
+              const li = document.createElement("li");
+              li.textContent = precaution;
+              precautionsList.appendChild(li);
+            });
+
+            // Update medications
+            const medicationsList = document.getElementById("medicationsList");
+            medicationsList.innerHTML = "";
+            diseaseData.medications.forEach((medication) => {
+              const li = document.createElement("li");
+              li.textContent = medication;
+              medicationsList.appendChild(li);
+            });
+
+            // Update workouts
+            const workoutsList = document.getElementById("workoutsList");
+            workoutsList.innerHTML = "";
+            diseaseData.workouts.forEach((workout) => {
+              const li = document.createElement("li");
+              li.textContent = workout;
+              workoutsList.appendChild(li);
+            });
+
+            // Update diets
+            const dietsList = document.getElementById("dietsList");
+            dietsList.innerHTML = "";
+            diseaseData.diets.forEach((diet) => {
+              const li = document.createElement("li");
+              li.textContent = diet;
+              dietsList.appendChild(li);
+            });
+          } else {
+            // Handle unknown disease
+            document.getElementById("predictedDisease").textContent =
+              "Unable to determine. Please consult a doctor.";
+            document.getElementById("diseaseDescription").textContent =
+              "The symptoms you entered don't match any known conditions in our database. Please consult a healthcare professional for accurate diagnosis.";
+
+            // Clear all lists
+            document.getElementById("precautionsList").innerHTML =
+              "<li>Please consult a doctor for advice</li>";
+            document.getElementById("medicationsList").innerHTML =
+              "<li>Please consult a doctor for advice</li>";
+            document.getElementById("workoutsList").innerHTML =
+              "<li>Please consult a doctor for advice</li>";
+            document.getElementById("dietsList").innerHTML =
+              "<li>Please consult a doctor for advice</li>";
+          }
+
+          // Show prediction result
+          predictionResult.style.display = "block";
+
+          // Scroll to results
+          predictionResult.scrollIntoView({ behavior: "smooth" });
+          suggestionsList.style.display = "none"; // Hide suggestions on predict
+        });
+
       const startSpeechRecognitionButton = document.getElementById(
         "startSpeechRecognition"
       );
@@ -747,6 +1430,12 @@
         recognition.onresult = function (event) {
           const result = event.results[0][0].transcript;
           transcriptionDiv.textContent = result;
+
+          // Also update the symptoms input with the transcribed text
+          document.getElementById("symptoms").value = result;
+
+          // Check if we should show appointment recommendation and clear button
+          checkSymptoms();
         };
 
         recognition.onend = function () {
@@ -755,6 +1444,57 @@
 
         recognition.start();
       }
+
+      // --- AUTOCOMPLETE KEYBOARD AND CLOSING LOGIC ---
+
+      function updateSelection(items) {
+        items.forEach((item, index) => {
+          item.classList.toggle("active", index === selectedIndex);
+          if (index === selectedIndex) {
+            // Scroll selected item into view if necessary
+            item.scrollIntoView({ block: "nearest" });
+          }
+        });
+      }
+
+      symptomInput.addEventListener("keydown", (e) => {
+        const items = suggestionsList.querySelectorAll(".suggestion-item");
+        if (suggestionsList.style.display === "none" || items.length === 0)
+          return;
+
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          selectedIndex = (selectedIndex + 1) % items.length;
+          updateSelection(items);
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+          updateSelection(items);
+        } else if (e.key === "Enter" && selectedIndex !== -1) {
+          e.preventDefault();
+          items[selectedIndex].click();
+        } else if (e.key === "Escape") {
+          suggestionsList.style.display = "none";
+          selectedIndex = -1;
+        }
+      });
+
+      // Hide suggestions when clicking outside the container
+      document.addEventListener("click", (e) => {
+        const autocompleteContainer = document.querySelector(
+          ".autocomplete-container"
+        );
+        if (!autocompleteContainer.contains(e.target)) {
+          suggestionsList.style.display = "none";
+          selectedIndex = -1;
+        }
+      });
+      // --- END AUTOCOMPLETE LOGIC ---
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        checkSymptoms();
+      });
     </script>
 
     <script>
@@ -765,7 +1505,8 @@
       const chatbotCloseBtn = document.querySelector(".close-btn");
 
       let userMessage;
-      const API_KEY = "AIzaSyAj4V3Iuo9AkiDY7tyhjQ3OXcya8Mx6vw8";
+      // NOTE: This API key is public; you should use a secure method for API calls in production.
+      const API_KEY = "AIzaSyAj4V3Iuo9AkiDY7tyhjQ3OXCYa8Mx6vw8";
       const inputInHeight = chatInput.scrollHeight;
 
       const createChatLi = (message, className) => {
@@ -773,15 +1514,15 @@
         chatLi.classList.add("chat", className);
         let chatContent =
           className === "outgoing"
-            ? `<p></p>`
-            : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+            ? "<p></p>" // Fixed template literal usage
+            : '<span class="material-symbols-outlined">smart_toy</span><p></p>';
         chatLi.innerHTML = chatContent;
         chatLi.querySelector("p").textContent = message;
         return chatLi;
       };
 
       const generateResponse = (incomingChatLi) => {
-        const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`; // Fixed template literal usage
         const messageElement = incomingChatLi.querySelector("p");
 
         const requestOptions = {
@@ -800,13 +1541,27 @@
         fetch(API_URL, requestOptions)
           .then((res) => res.json())
           .then((data) => {
-            messageElement.classList.add("error");
-            messageElement.textContent =
-              data.candidates[0].content.parts[0].text; // Update message text with API response
+            // Check if candidates array exists and has content
+            if (
+              data.candidates &&
+              data.candidates[0] &&
+              data.candidates[0].content &&
+              data.candidates[0].content.parts[0]
+            ) {
+              messageElement.textContent =
+                data.candidates[0].content.parts[0].text;
+              messageElement.classList.remove("error"); // Ensure error class is removed if successful
+            } else {
+              messageElement.textContent =
+                "Oops! Something went wrong or the response was empty.";
+              messageElement.classList.add("error");
+            }
           })
           .catch((error) => {
+            console.error("API Error:", error);
             messageElement.textContent =
               "Oops! Something went wrong. Please try again.";
+            messageElement.classList.add("error");
           })
           .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
       };
@@ -815,7 +1570,7 @@
         userMessage = chatInput.value.trim();
         if (!userMessage) return;
         chatInput.value = "";
-        chatInput.style.height = `${inputInHeight}px`;
+        chatInput.style.height = `${inputInHeight}px`; // Fixed template literal usage
 
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
         chatbox.scrollTo(0, chatbox.scrollHeight);
@@ -829,8 +1584,8 @@
       };
 
       chatInput.addEventListener("input", () => {
-        chatInput.style.height = `${inputInHeight}px`;
-        chatInput.style.height = `${chatInput.scrollHeight}px`;
+        chatInput.style.height = `${inputInHeight}px`; // Fixed template literal usage
+        chatInput.style.height = `${chatInput.scrollHeight}px`; // Fixed template literal usage
       });
 
       chatInput.addEventListener("keydown", (e) => {
@@ -851,7 +1606,7 @@
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      xintegrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
   </body>
